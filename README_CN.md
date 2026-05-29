@@ -10,6 +10,29 @@ LaTeX 输入  →  Equation.DSMT4 (MathType COM)  →  MathML  →  OMML  →  p
 
 MathType 的 `Equation.DSMT4` COM 对象可**独立运行**，无需打开 Word。转换步骤完全脱离 Word COM，仅最终 XML 插入依赖 `python-docx`。
 
+## 安装为 Claude Code Skill
+
+```bash
+# 1. 克隆仓库
+git clone git@github.com:zb1655235-cpu/mathtype-docx.git
+
+# 2. 安装到 Claude Code skills 目录
+#    Windows（作者使用此路径）：
+mkdir -p "$HOME/claude-config/skills"
+cp -r mathtype-docx "$HOME/claude-config/skills/"
+
+#    macOS/Linux:
+mkdir -p ~/.claude/skills
+cp -r mathtype-docx ~/.claude/skills/
+
+# 3. 安装 Python 依赖
+pip install python-docx pywin32 lxml
+```
+
+安装后重启 Claude Code 即可。当你说"插入公式"、"add equation to docx"、"convert LaTeX to Word equation"等指令时，技能会自动激活。
+
+> **提示：** Claude Code 默认从 `~/.claude/skills/` 加载技能。如果你用的是自定义配置路径，请相应调整第 2 步。技能目录的根目录下必须包含 `SKILL.md` 文件。
+
 ## 快速开始
 
 ```bash
